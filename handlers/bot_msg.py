@@ -9,13 +9,14 @@ from aiogram.enums import ParseMode
 from google.generativeai.types import RequestOptions
 from google.api_core import retry
 from keyboards import reply
+from config_reader import config
 
 
 import data.db as db
 
 
 router = Router()
-GOOGLE_API_KEY = 'AIzaSyBXEXz9uxbDkPCs1O5PcVEKVjx0JUZ1-74'
+GOOGLE_API_KEY = config.API.get_secret_value()
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel("gemini-1.5-pro")
 

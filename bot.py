@@ -4,10 +4,11 @@ from aiogram import Bot, Dispatcher, F
 from handlers import bot_msg, user_cmds
 from aiogram.client.bot import DefaultBotProperties
 from aiogram.enums import ParseMode
+from config_reader import config
 
 
 async def main():
-    bot = Bot('7866921848:AAEOBnLHzbniq4JSsmKxQzI5_Dj4ecq4oJA')
+    bot = Bot(config.BOT_TOKEN.get_secret_value())
     dp = Dispatcher()
 
     dp.include_routers(
